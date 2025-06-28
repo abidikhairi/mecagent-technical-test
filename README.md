@@ -9,8 +9,10 @@ The CAD code contains excessive floating-point precision, which is problematic f
 - Code Transformation: Refactor CAD code to initialize numeric values as variables, then reference those variables in the instructions. This makes patterns easier to learn and improves generalization.
 
 #### My Approach
-The task is fundamentally image-to-code generation with limited instruction complexity.
+- The task is a direct image-to-code generation with limited instruction complexity.
 
-I selected RoFormer (Transformer decoder) for its ability to handle long contexts efficiently and its manageable model size.
+- I used a small Vision Transformer (ViT) encoder to extract features from the CAD image efficiently.
 
-The model was trained from scratch, as the target code format is out-of-distribution for existing LLMs. Pretrained models performed poorly (see zero-shot results in directory `results`).
+- For the decoder, I chose RoFormer, a transformer decoder capable of handling long sequences with relative positioning.
+
+- The model was trained from scratch due to the domain mismatch with pretrained LLMs. Zero-shot performance confirmed poor generalization without fine-tuning (`results/smolvlm_zero_shot.json`).
