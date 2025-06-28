@@ -16,3 +16,9 @@ The CAD code contains excessive floating-point precision, which is problematic f
 - For the decoder, I chose RoFormer, a transformer decoder capable of handling long sequences with relative positioning.
 
 - The model was trained from scratch due to the domain mismatch with pretrained LLMs. Zero-shot performance confirmed poor generalization without fine-tuning (`results/smolvlm_zero_shot.json`).
+
+#### Implementation Notes
+- I noticed that large LLMs like LLaMA, Qwen, Phi, and Gemma are not yet supported by the `VisionEncoderDecoderModel` API in Hugging Face Transformers.
+
+- This limits plug-and-play experimentation with cutting-edge decoders.
+
